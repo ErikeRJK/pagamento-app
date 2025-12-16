@@ -8,7 +8,7 @@ import { GoShieldCheck } from "react-icons/go";
 
 
 
-export default function PaymentForm(){
+export default function PaymentForm({ handlePay }){
    const icons = [
     {
         icon: <LuLock />,
@@ -53,7 +53,7 @@ export default function PaymentForm(){
                 />
             </div>
 
-            <CustomButton>
+            <CustomButton onClick={handlePay}>
                 <BiLock />
                 Pagar agora
             </CustomButton>

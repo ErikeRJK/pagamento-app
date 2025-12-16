@@ -1,10 +1,31 @@
 import { GoShieldCheck } from "react-icons/go";
 import PaymentForm from "./components/PaymentForm";
 import CreditCard from "./components/CreditCard";
+import { useState } from "react";
+import { toast, ToastContainer } from "react-toastify";
 
 export default function App() {
+
+  const [number, setNumber] = useState("")
+  const [name, setName] = useState("")
+  const [expiration, setExpiration] = useState("")
+  const [cvv, setCvv] = useState("0")
+
+  function handlePay(event){
+    event.preventDefault()
+    toast.success("Pagamento realizado !")
+  }
+
   return (
     <div className="w-full min-h-screen bg-[#f0f4fa]">
+      <ToastContainer 
+      position="top-right"
+      autoClose={5000}
+      theme="colored"
+      pauseOnHover
+      hideProgressBar
+      closeOnClick
+      />
       <div className="flex w-full min-h-screen">
         <div className="w-[50%] p-16 flex flex-col justify-center">
           <div className="w-full max-w-md mx-auto">
@@ -23,7 +44,7 @@ export default function App() {
               </p>
             </div>
 
-            <PaymentForm />
+            <PaymentForm handlePay={handlePay} />
           </div>
         </div>
 
