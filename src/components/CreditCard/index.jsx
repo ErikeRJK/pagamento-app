@@ -27,7 +27,7 @@ export default function CreditCard(){
                         <div className="flex justify-between items-end relative z-10">
                             <div className="">
                                 <p className="text-[10px] uppercase mb-1 text-[#b3bbcc]">Titular do cartão</p>
-                                <p className="font-medium text-sm text-white uppercase truncate max-w-[200px]">Jorge Renan</p>
+                                <p className="font-medium text-sm text-white uppercase truncate max-w-[200px]">Rodrigues</p>
                             </div>
                             
                             <div className="text-right">

@@ -35,7 +35,7 @@ export default function PaymentForm(){
             <CustomInput
                 label = "Nome do titular"
                 type = "text" 
-                placeholder = "COMO APARECE NO CARTÃO"
+                placeholder = "Nome do títular do cartão"
             />
 
             <div className="grid grid-cols-2 gap-4">
