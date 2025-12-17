@@ -2,7 +2,7 @@ import { useState } from "react";
 import { FcSimCardChip } from "react-icons/fc";
 import { LuNfc } from "react-icons/lu";
 
-export default function CreditCard(){
+export default function CreditCard({name, number, expiration, cvv}){
     const [isFlipped, setIsFlipped] = useState(false)
     //const [Variavél, função] = useState(condição inicial da variavel)
     return (
@@ -20,19 +20,19 @@ export default function CreditCard(){
                         
                         <div className="relative z-10">
                             <p className="font-mono text-[28px] text-white whitespace-nowrap">
-                                •••• •••• •••• ••••
+                                {number || "•••• •••• •••• ••••"}
                             </p>
                         </div>
 
                         <div className="flex justify-between items-end relative z-10">
                             <div className="">
-                                <p className="text-[10px] uppercase mb-1 text-[#b3bbcc]">Titular do cartão</p>
-                                <p className="font-medium text-sm text-white uppercase truncate max-w-[200px]">Rodrigues</p>
+                                <p className="text-[10px] uppercase mb-1 text-[#b3bbcc]">Titular do cartão </p>
+                                <p className="font-medium text-sm text-white uppercase truncate max-w-[200px]">{name || "Nome do títular"}</p>
                             </div>
                             
                             <div className="text-right">
                                 <p className="text-[10px] uppercase mb-1 text-[#b3bbcc]">Validade</p>
-                                <p className="font-mono text-sm text-white">MM/AA</p>
+                                <p className="font-mono text-sm text-white">{expiration || "MM/AA"}</p>
                             </div>
                         </div>
                     </div>
@@ -45,7 +45,7 @@ export default function CreditCard(){
                         <div className="px-6 mt-6">
                             <div className="flex items-center gap-4">
                                 <div className="flex-1 h-10 bg-slate-200 rounded-md flex items-center justify-end px-4">
-                                    <span className="text-slate-800 text-lg font-mono">•••</span>
+                                    <span className="text-slate-800 text-lg font-mono"> { cvv ||"•••"}</span>
                                 </div>
                                 <p className="text-[10px] text-[#b3bbcc]">CVV</p>
                             </div>
