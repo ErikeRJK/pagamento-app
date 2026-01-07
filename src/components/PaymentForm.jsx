@@ -15,7 +15,7 @@ export default function PaymentForm({
   name,
   number,
   expiration,
-  cvv
+  cvv,
 }) {
   const icons = [
     {
@@ -42,6 +42,29 @@ export default function PaymentForm({
     setNumber(format);
   }
 
+  function formatExpiration(event) {
+    const value = event.target.value.replace(/\//g, "");
+
+    if (value.length > 4) return;
+
+    const v = value.replace(/\s+/g, "").replace(/[^0-9]/gi, "");
+
+    if (v.length > 2) {
+      setExpiration(v.substring(0, 2) + "/" + v.substring(2, 4));
+      return;
+    }
+
+    setExpiration(v);
+  }
+
+  function formatCvv(event){
+    const value = event.target.value.replace(/\D/g, "")
+
+    if(value.length > 3) return;
+
+    setCvv(value)
+  }
+
   return (
     <form className="space-y-6">
       <CustomInput
@@ -53,6 +76,7 @@ export default function PaymentForm({
         icon={<CiCreditCard1 />}
       />
       <CustomInput
+        value={name}
         onChange={(event) => setName(event.target.value)}
         label="Nome do titular"
         type="text"
@@ -61,14 +85,16 @@ export default function PaymentForm({
 
       <div className="grid grid-cols-2 gap-4">
         <CustomInput
-          onChange={(event) => setExpiration(event.target.value)}
+          value={expiration}
+          onChange={formatExpiration}
           label="Validade"
           type="text"
           placeholder="MM/AA"
         />
 
         <CustomInput
-          onChange={(event) => setCvv(event.target.value)}
+          value={cvv}
+          onChange={formatCvv}
           label="CVV"
           type="text"
           placeholder="•••"

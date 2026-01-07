@@ -3,29 +3,50 @@ import PaymentForm from "./components/PaymentForm";
 import CreditCard from "./components/CreditCard";
 import { useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
+// import axios from "axios";
 
 export default function App() {
   const [number, setNumber] = useState("");
   const [name, setName] = useState("");
   const [expiration, setExpiration] = useState("");
-  const [cvv, setCvv] = useState(0);
+  const [cvv, setCvv] = useState("");
 
   function handlePay(event) {
     event.preventDefault();
+    const cleanNumber = number.replace(/\s+/g, "")
 
-    if (!name || !number || !expiration || !cvv) {
+    if (!name || !cleanNumber || !expiration || !cvv) {
       toast.error("Preencha todos os campos");
       return;
     }
 
-    console.log(
-      name,
-      number,
-      expiration,
-      cvv
-    )
+    if (expiration.length !== 5){
+      toast.error("Campo validade está inválido");
+      return;
+    }
+
+    if (cleanNumber.length !== 16){
+      toast.error("Número do cartão inválido");
+      return;
+    }
+
+    if (cvv.length < 3 || cvv.length > 3){
+      toast.error("O campo CVV deve conter exatamente os 3 dígitos do seu cartão");
+      return;
+    }
+
+    // try {
+    //   axios.post()
+    // } catch (error) {
+      
+    // }
 
     toast.success("Pagamento realizado !");
+
+    setName("")
+    setNumber("")
+    setExpiration("")
+    setCvv("")
   }
 
   return (
