@@ -61,14 +61,6 @@ async function handlePay(event){
 
   return (
     <div className="w-full min-h-screen bg-[#f0f4fa]">
-      <ToastContainer
-        position="top-right"
-        autoClose={5000}
-        theme="colored"
-        pauseOnHover
-        hideProgressBar
-        closeOnClick
-      />
       <div className="flex w-full min-h-screen">
         <div className="w-[50%] p-16 flex flex-col justify-center">
           <div className="w-full max-w-md mx-auto">
