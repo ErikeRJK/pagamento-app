@@ -58,7 +58,7 @@ export default function Cards() {
         <div className="grid grid-cols-3 gap-6">
           {cards.map((card) => {
             return(
-              <div className="bg-white/50 backdrop-blur-sm rounded-2xl p-6 border border-[#e2e4e980] hover:border-[#2a6df4]/30 transition-all duration-300 ease-in-out cursor-pointer hover:shadow-lg">
+              <div key={card._id} className="bg-white/50 backdrop-blur-sm rounded-2xl p-6 border border-[#e2e4e980] hover:border-[#2a6df4]/30 transition-all duration-300 ease-in-out cursor-pointer hover:shadow-lg">
                 <CreditCard 
                   name={card.name}
                   number={card.number}
