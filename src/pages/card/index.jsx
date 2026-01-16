@@ -5,6 +5,7 @@ import { fakeRequestApi } from "../../helpers/fakeRequestApi";
 import { toast } from "react-toastify";
 import { CiCreditCard1 } from "react-icons/ci";
 import maskedNumber from "../../helpers/maskedNumber";
+import CreditCard from "../../components/CreditCard";
 
 export default function Card() {
   const navigate = useNavigate();
@@ -49,7 +50,14 @@ export default function Card() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-
+            <div className="flex flex-col items-center">
+                <CreditCard 
+                    name={card?.name}
+                    number={maskedNumber(card?.number)}
+                    expiration={card?.expiration}
+                    cvv={card?.cvv}
+                />
+            </div>
         </div>
 
       </div>
